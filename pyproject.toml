@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hermes-github-ops"
+version = "0.1.0"
+description = "A safe, gh CLI-based GitHub operations plugin for Hermes and Codex."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Anwesh"}]
+dependencies = []
+
+[project.scripts]
+hermes-github-ops = "hermes_github_ops.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,17 @@
+name: hermes-github-ops
+version: 0.1.0
+manifest_version: 2
+api_version: 1
+description: Conservative multi-repository GitHub operations for Hermes using gh CLI
+license: MIT
+tags: [github, issues, pull-requests, triage, automation]
+config_schema:
+  profile:
+    type: str
+    default: ""
+    description: Path to the active project profile TOML file
+  poll_interval_minutes:
+    type: int
+    default: 5
+    description: Suggested watcher or cron interval
+

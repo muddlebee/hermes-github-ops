@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GitHub issue triage report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "verdict",
+    "confidence",
+    "priority_recommendation",
+    "evidence",
+    "missing_information",
+    "duplicate_candidates",
+    "suggested_labels",
+    "comment"
+  ],
+  "properties": {
+    "verdict": {
+      "enum": [
+        "confirmed_bug",
+        "possible_bug",
+        "needs_info",
+        "duplicate",
+        "expected_behavior",
+        "out_of_scope",
+        "security_report_needed"
+      ]
+    },
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "priority_recommendation": {"enum": ["P1", "P2", "P3", "P4", null]},
+    "evidence": {"type": "array", "items": {"type": "string"}, "maxItems": 8},
+    "missing_information": {"type": "array", "items": {"type": "string"}, "maxItems": 8},
+    "duplicate_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["number", "reason"],
+        "properties": {
+          "number": {"type": "integer", "minimum": 1},
+          "reason": {"type": "string"}
+        }
+      },
+      "maxItems": 5
+    },
+    "suggested_labels": {"type": "array", "items": {"type": "string"}, "maxItems": 4},
+    "comment": {"type": "string", "maxLength": 2400}
+  }
+}

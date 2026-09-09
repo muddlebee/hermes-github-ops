@@ -1,0 +1,48 @@
+[project]
+name = "example-project"
+repository = "OWNER/REPOSITORY"
+# A clean, read-only-to-Codex checkout maintained by the VPS.
+checkout_path = "/srv/hermes/checkouts/example-project"
+
+[state]
+database_path = "${HERMES_HOME}/plugin-data/hermes-github-ops/example-project.sqlite3"
+
+[issue_triage]
+# This is read by the Codex worker and can be tailored per repository.
+policy_path = "../policy/default-issue-triage.md"
+comment_on_issue = true
+retry_after_seconds = 900
+
+[labels]
+# The writer applies only labels listed here. Create them once in GitHub.
+allowed = [
+  "triage:confirmed",
+  "triage:possible-bug",
+  "triage:needs-info",
+  "triage:duplicate-candidate",
+  "triage:expected-behavior",
+  "triage:out-of-scope",
+  "triage:security-report-needed",
+  "triage:priority-p1",
+  "triage:priority-p2",
+  "triage:priority-p3",
+  "triage:priority-p4",
+  "area:backend",
+  "area:frontend",
+  "area:documentation",
+]
+
+[labels.verdict]
+confirmed_bug = "triage:confirmed"
+possible_bug = "triage:possible-bug"
+needs_info = "triage:needs-info"
+duplicate = "triage:duplicate-candidate"
+expected_behavior = "triage:expected-behavior"
+out_of_scope = "triage:out-of-scope"
+security_report_needed = "triage:security-report-needed"
+
+[labels.priority]
+P1 = "triage:priority-p1"
+P2 = "triage:priority-p2"
+P3 = "triage:priority-p3"
+P4 = "triage:priority-p4"
